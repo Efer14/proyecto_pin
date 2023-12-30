@@ -1,0 +1,87 @@
+body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.bloque {
+    background-image: url('/assets/Trading-institucional-min.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    /* Usa el 100% del alto de la ventana (viewport height) */
+}
+
+header {
+    display: flex;
+    /* Establece el modelo de visualización flex en el encabezado */
+    justify-content: space-between;
+    /* Coloca espacio entre los elementos dentro del encabezado */
+    align-items: center;
+    /* Centra verticalmente los elementos dentro del encabezado */
+    padding: 10px;
+    /* Espaciado interior del encabezado */
+    background: transparent;
+    border-bottom: 3px solid white;
+
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+nav ul li {
+    display: inline-block;
+    margin-right: 50px;
+    /* Espaciado entre elementos del menú */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    /* Otros estilos para los enlaces del menú */
+}
+
+h1 {
+    margin: 0;
+    margin-left: 20px;
+    color: white;
+
+}
+
+.active {
+    color: rgb(27, 187, 192);
+    border: 1px solid rgb(239, 245, 245);
+}
+
+/* Media query para pantallas más pequeñas (ejemplo: dispositivos móviles) */
+@media screen and (max-width: 900px) {
+    .bloque {
+        height: 70vh;
+        /* Ajusta la altura en pantallas más pequeñas si es necesario */
+    }
+
+    nav ul li {
+        margin-right: 5px;
+        /* Reducir más el espacio entre elementos del menú */
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: row;
+        align-items: center
+            /* Centra los elementos del menú verticalmente */
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+        /* Añade espaciado entre elementos del menú */
+    }
+}
