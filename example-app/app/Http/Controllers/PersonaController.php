@@ -28,7 +28,38 @@ class PersonaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nombre' => 'required|min:2|max:255',
+            'apellido' => 'required|min:2|max:255',
+            'telefono' => 'required|numeric|max:17|min:8',
+            'email' => 'required|email|max:255',
+            'mensaje' => 'max:500',
+        ]);
+        
+        if ($validatedData) {
+            $persona = Persona:: create([
+                'nombre' => $request->nombre,
+                'apellido' => $request->apellido,
+                'telefono' => $request->telefono,
+                'email' => $request->email,
+                'mensaje' => $request->mensaje,
+            ]);
+            }
+
+        
+        $details = [
+            'nombre' => $request->nombre,
+            'apellido' => $request->apellido,
+        ];
+
+        return response()->json ([
+            'mensaje' => 'Se inserto correctamente la persona', 
+            'data' => [
+                'nombre' => $persona->nombre,
+                'apellido' => $persona->apellido,
+            ]
+
+            ]);
     }
 
     /**
