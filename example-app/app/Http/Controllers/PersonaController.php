@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Persona;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PersonaController extends Controller
 {
@@ -31,7 +32,7 @@ class PersonaController extends Controller
         $validatedData = $request->validate([
             'nombre' => 'required|min:2|max:255',
             'apellido' => 'required|min:2|max:255',
-            'telefono' => 'required|numeric|max:17|min:8',
+            'telefono' => 'required|max:17',
             'email' => 'required|email|max:255',
             'mensaje' => 'max:500',
         ]);
@@ -51,6 +52,8 @@ class PersonaController extends Controller
             'nombre' => $request->nombre,
             'apellido' => $request->apellido,
         ];
+
+        Mail::to('mpcar@gmail.com')-> send(new \App\Mail\RegistroMail($details));
 
         return response()->json ([
             'mensaje' => 'Se inserto correctamente la persona', 
